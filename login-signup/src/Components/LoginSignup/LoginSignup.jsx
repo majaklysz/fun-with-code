@@ -31,6 +31,15 @@ export const LoginSignup = () => {
           <img src={password_icon} alt="" />
           <input type="password" placeholder="Password" />
         </div>
+
+        {action === "Sign Up" ? (
+          <div className="input">
+            <img src={password_icon} alt="" />
+            <input type="password" placeholder="Repeat password" />
+          </div>
+        ) : (
+          <div></div>
+        )}
       </div>
 
       {action === "Sign Up" ? (
@@ -40,24 +49,36 @@ export const LoginSignup = () => {
           Forgot Passward? <span>Click Here!</span>
         </div>
       )}
-
       <div className="submit-container">
-        <div
-          className={action === "Login" ? "submit gray" : "submit"}
-          onClick={() => {
-            setAction("Sign Up");
-          }}
-        >
-          Sign Up
-        </div>
-        <div
-          className={action === "Sign Up" ? "submit gray" : "submit"}
-          onClick={() => {
-            setAction("Login");
-          }}
-        >
-          Login
-        </div>
+        <div className="submit-button">{action}</div>
+      </div>
+
+      <div className="choice-container">
+        {action === "Sign Up" ? (
+          <div></div>
+        ) : (
+          <div
+            className={action === "Login" ? "choice gray" : "submit"}
+            onClick={() => {
+              setAction("Sign Up");
+            }}
+          >
+            Sign Up
+          </div>
+        )}
+
+        {action === "Login" ? (
+          <div></div>
+        ) : (
+          <div
+            className={action === "Sign Up" ? "choice gray" : "submit"}
+            onClick={() => {
+              setAction("Login");
+            }}
+          >
+            Login
+          </div>
+        )}
       </div>
     </div>
   );
